@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm ="clr-namespace:MauiAppDemo.VM"
+             x:Class="MauiAppDemo.Page.Mine"
+             Title="Mine">
+
+    <ContentPage.BindingContext>
+        <vm:UdpViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout >
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label Text="接收到的消息：" FontSize="20" />
+        <ScrollView 
+            x:Name="MessageScrollView"
+            HeightRequest="100" 
+            VerticalScrollBarVisibility="Default">
+            <Label 
+                 x:Name="ReceivedMessageLabel" 
+                Text="{Binding ReceivedMessage}" 
+                FontSize="18" 
+                TextColor="Red" 
+                LineBreakMode="WordWrap" />
+        </ScrollView>
+        <Entry x:Name="MessageEntry" Placeholder="Enter message to send" />
+        <Button 
+            Text="Start Sending"
+             WidthRequest="200" 
+                Margin="10,20,10,0" 
+                HorizontalOptions="Center"
+                Style="{StaticResource Button}"
+                Clicked="OnStartSendingClicked" />
+        <Button Text="Stop Sending" 
+                 WidthRequest="200" 
+                Margin="10,20,10,0" 
+                HorizontalOptions="Center"
+                Style="{StaticResource Button}"
+                Clicked="OnStopSendingClicked" />
+        <Button 
+            Text="连接"
+            WidthRequest="200" 
+            Margin="10,20,10,0" 
+            x:Name="connectBtn"
+            IsVisible="False"
+            HorizontalOptions="Center"
+            Style="{StaticResource Button}"
+            Clicked="connectBtn_Clicked">
+        </Button>
+        <Button 
+            Text="Reback"
+            WidthRequest="200" 
+            Margin="10,20,10,0" 
+            x:Name="backBtn"
+            HorizontalOptions="Center"
+            Style="{StaticResource Button}"
+            Clicked="backBtn_Clicked">
+        </Button>
+    </VerticalStackLayout>
+</ContentPage>
